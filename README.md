@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$) ![https://www.npmjs.com/package/calendar-creator](https://img.shields.io/npm/v/calendar-creator)
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$) [![npm](https://img.shields.io/npm/v/calendar-creator)](https://www.npmjs.com/package/calendar-creator)
 
 # useCalendar
 
