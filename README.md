@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$statements$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$functions$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$lines$)
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$)
 
 # useCalendar
 

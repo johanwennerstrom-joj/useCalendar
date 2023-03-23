@@ -5,21 +5,6 @@
       "logo": "jest",
       "logoColor": "white",
       "color": "blue"
-     },
-     "branches": {
-      "logo": "jest",
-      "logoColor": "white",
-      "color": "blue"
-     },
-     "function": {
-      "logo": "jest",
-      "logoColor": "white",
-      "color": "blue"
-     },
-     "lines": {
-     "logo": "jest",
-     "logoColor": "white",
-     "color": "blue"
-    }
+     }
   }
 }
