@@ -1,0 +1,40 @@
+{
+  "name": "usecalendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --config jest.config.js --coverage",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.tsx\"",
+    "lint": "eslint --fix",
+    "coverage:badge": "coverage-badge-creator  --config 'badge-coverage-config.json'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "types": "lib/index.d.ts",
+  "devDependencies": {
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/react": "^18.0.28",
+    "coverage-badge-creator": "^1.0.17",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "prettier": "^2.8.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "ts-jest": "^29.0.5",
+    "typescript": "^5.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=17.2.0",
+    "react-dom": ">=17.2.0"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "dependencies": {
+    "date-fns": "^2.29.3"
+  }
+}
