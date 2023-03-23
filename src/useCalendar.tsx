@@ -50,7 +50,7 @@ interface IUseCalendar {
  *  useCalendar hook - returns calendar object
  * 	@return {Calendar}
  */
-export const useCalendar = ({
+const useCalendar = ({
     inputDate,
     dateFormat = 'dd-MM-yyyy',
     locale,
@@ -84,3 +84,5 @@ export const useCalendar = ({
 
     return calendar
 }
+
+export { useCalendar }
