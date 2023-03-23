@@ -2,11 +2,24 @@
   "coverage_file_path": "./coverage/coverage-summary.json",
   "badges": {
     "coverage": {
-      "logo": "foo",
-      "color": "bar"
+      "logo": "jest",
+      "logoColor": "white",
+      "color": "blue"
      },
-     "branches": {},
-     "function": {},
-     "lines": {}
+     "branches": {
+      "logo": "jest",
+      "logoColor": "white",
+      "color": "blue"
+     },
+     "function": {
+      "logo": "jest",
+      "logoColor": "white",
+      "color": "blue"
+     },
+     "lines": {
+     "logo": "jest",
+     "logoColor": "white",
+     "color": "blue"
+    }
   }
 }
