@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=foo&color=bar&prefix=$coverage$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$branches$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$functions$) ![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$lines$)
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$lines$)
 
 # useCalendar
 

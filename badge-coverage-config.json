@@ -4,6 +4,9 @@
     "coverage": {
       "logo": "foo",
       "color": "bar"
-     }
+     },
+     "branches": {},
+     "function": {},
+     "lines": {}
   }
 }
