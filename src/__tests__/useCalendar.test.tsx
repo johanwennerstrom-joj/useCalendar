@@ -1,5 +1,5 @@
 import { renderHook, act, waitFor } from '@testing-library/react'
-import useCalendar from '../useCalendar'
+import { useCalendar } from '../useCalendar'
 
 test('takes input values and returns calendar object', () => {
     const { result } = renderHook(() =>
