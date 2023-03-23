@@ -26,8 +26,8 @@ const {decrement, increment, interval, monthInText } = useCalendar({
 
 ## Using calendardata
 
-    - Map over interval
-    - Use provided formatter to format according to provided format
+-   Map over interval
+-   Use provided formatter to format according to provided format
 
 ```
 const App = () => {
