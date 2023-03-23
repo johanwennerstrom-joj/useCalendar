@@ -1,19 +1,28 @@
 {
   "name": "usecalendar",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Minimal hook for creating calendars",
+  "main": "./lib/useCalendar.js",
   "scripts": {
     "test": "jest --config jest.config.js --coverage",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.tsx\"",
     "lint": "eslint --fix",
+    "prepare" : "pnpm build",
+    "prepublishOnly" : "pnpm test && pnpm run lint && pnpm run coverage:badge",
+    "preversion" : "npm run lint",
+    "version" : "pnpm run format && git add -A src",
+    "postversion" : "git push && git push --tags",
     "coverage:badge": "coverage-badge-creator  --config 'badge-coverage-config.json'"
   },
   "keywords": [],
-  "author": "",
+  "author": "https://github.com/johanwennerstrom-joj",
   "license": "ISC",
   "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johanwennerstrom-joj/useCalendar.git"
+  },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.0",
