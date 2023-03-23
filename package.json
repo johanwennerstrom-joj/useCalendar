@@ -1,6 +1,6 @@
 {
   "name": "calendar-creator",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Minimal hook for creating calendars",
   "main": "./lib/useCalendar.js",
   "scripts": {
