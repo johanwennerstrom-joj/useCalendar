@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$) [![npm version](https://badge.fury.io/js/calendar-creator.svg)](https://badge.fury.io/js/calendar-creator)
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?logo=jest&logoColor=white&color=blue&prefix=$coverage$) [![npm version](https://badge.fury.io/js/calendar-creator.svg)](https://www.npmjs.com/package/calendar-creator?activeTab=readme)
 
 # useCalendar
 
