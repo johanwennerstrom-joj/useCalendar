@@ -22,7 +22,7 @@ interface ICalendarReturnType {
 
 interface IUseCalendar {
     /**
-     *  @param {Date} inputDate - Startdate for calendar. Defaults to todays date.
+     *  @param {Date} inputDate - Startdate for calendar.
      */
     inputDate: Date
     /**
