@@ -2,6 +2,8 @@
 
 # useCalendar
 
+(useCalendar name was taken 😢 so it goes under calendar-creator)
+
 Minimal hook for generating logic for calendars
 
 ## Example use
