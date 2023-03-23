@@ -27,15 +27,16 @@ const {decrement, increment, interval, monthInText } = useCalendar({
 ## Using calendardata
 
 -   Map over interval
--   Use provided formatter to format according to provided format
+-   Use provided formatterfunc to apply default or provided format
 
 ```
 const App = () => {
-	const { interval, formatter } = useCalendar({ inputDate: new Date() })
+	const { interval, formatter } = useCalendar({ inputDate: new Date(), dateFormat: 'dd/MM/yyyy' })
 
 	return (
 		<div>
 			{interval.map((date) => (
+                {/* Date will be formatted to dd/MM/yyyy */}
 				<div key={date.getTime()}>{formatter(date)}</div>
 			))}
 		</div>
