@@ -20,6 +20,17 @@ interface ICalendarReturnType {
     formatter: () => string
 }
 
+/**
+ * @typedef {Object} Calendar
+ * @property {string} date - Formatted current date.
+ * @property {string} monthInText - Current month in plain text.
+ * @property {function} increment - Increment the current month.
+ * @property {function} decrement - Decrement the current month.
+ * @property {number} monthLength - Length of current month.
+ * @property {Date[]} interval - Array of all dates in current month
+ * @property {function} formatter - Date-fns based formatter function with applied dateFormat and locale
+ */
+
 interface IUseCalendar {
     /**
      *  @param {Date} inputDate - Startdate for calendar.
@@ -36,19 +47,10 @@ interface IUseCalendar {
 }
 
 /**
- * @typedef {Object} Calendar
- * @property {string} date - Formatted current date.
- * @property {string} monthInText - Current month in plain text.
- * @property {function} increment - Increment the current month.
- * @property {function} decrement - Decrement the current month.
- * @property {number} monthLength - Length of current month.
- * @property {Date[]} interval - Array of all dates in current month
- * @property {function} formatter - Date-fns based formatter function with applied dateFormat and locale
- */
-
-/**
  *  useCalendar hook - returns calendar object
- * 	@return {Calendar}
+ * @example
+ *  const {date, monthInText, interval} = useCalendar({inputDate: new Date()})
+ * @returns {Calendar}
  */
 const useCalendar = ({
     inputDate,

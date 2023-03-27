@@ -8,6 +8,7 @@ test('takes input values and returns calendar object', () => {
             dateFormat: 'dd/MM/yyyy',
         })
     )
+
     expect(result.current.date).toBe('01/02/2022')
 
     // Check increment/decrement
