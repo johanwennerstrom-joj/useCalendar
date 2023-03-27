@@ -10,6 +10,16 @@ Minimal hook for generating logic for calendars
 
 -   Initializing calendar
 
+
+```
+import { useCalendar } from 'calendar-creator'
+
+const { interval, monthInText } = useCalendar({ inputDate: new Date() })
+
+```
+
+- Using with Locale and custom dateFormat
+
 ```
 /* Locales are imported seperately from date-fns
    and not included in package */
@@ -18,7 +28,7 @@ import fr from 'date-fns/locale/fr'
 
 const {decrement, increment, interval, monthInText } = useCalendar({
     inputDate: new Date(),
-    dateFormat: 'dd-MM-yyyy',
+    dateFormat: 'dd/MM/yyyy',
     locale: fr
 })
 
