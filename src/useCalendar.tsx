@@ -5,6 +5,9 @@ import getDaysInMonth from 'date-fns/getDaysInMonth'
 import eachDayOfInterval from 'date-fns/eachDayOfInterval'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
+import endOfWeek from 'date-fns/endOfWeek'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
 
 import type { Locale } from 'date-fns'
 
@@ -44,6 +47,26 @@ interface IUseCalendar {
      *  @param {Locale} locale - Provided date-fns locale.
      */
     locale?: Locale
+    /**
+     *  @param {boolean} adjacent - Include days adjacent to current month to form full weeks
+     */
+    adjacent?: boolean
+}
+
+const getStart = (date: Date, locale?: Locale) => {
+    const start = startOfMonth(date)
+    if (getDay(start) === 1) {
+        return start
+    }
+    return startOfWeek(start, { weekStartsOn: 2, locale })
+}
+
+const getEnd = (date: Date, locale?: Locale) => {
+    const end = endOfMonth(date)
+    if (getDay(end) === 0) {
+        return end
+    }
+    return endOfWeek(end, { weekStartsOn: 2, locale })
 }
 
 /**
@@ -56,6 +79,7 @@ const useCalendar = ({
     inputDate,
     dateFormat = 'dd-MM-yyyy',
     locale,
+    adjacent,
 }: IUseCalendar) => {
     const [currentDate, setCurrentDate] = useState(inputDate)
 
@@ -76,8 +100,12 @@ const useCalendar = ({
                 setCurrentDate((prevMonth) => subMonths(prevMonth, 1)),
             monthLength: getDaysInMonth(currentDate),
             interval: eachDayOfInterval({
-                start: startOfMonth(currentDate),
-                end: endOfMonth(currentDate),
+                start: adjacent
+                    ? getStart(currentDate, locale)
+                    : startOfMonth(currentDate),
+                end: adjacent
+                    ? getEnd(currentDate, locale)
+                    : endOfMonth(currentDate),
             }),
             formatter,
         }),

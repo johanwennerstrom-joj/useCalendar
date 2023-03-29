@@ -4,36 +4,77 @@ import { useCalendar } from '../useCalendar'
 test('takes input values and returns calendar object', () => {
     const { result } = renderHook(() =>
         useCalendar({
-            inputDate: new Date('2022-02-01'),
+            inputDate: new Date('2023-03-01'),
             dateFormat: 'dd/MM/yyyy',
+            adjacent: true,
         })
     )
 
-    expect(result.current.date).toBe('01/02/2022')
+    console.log(result.current.interval)
+
+    expect(result.current.date).toBe('01/03/2023')
 
     // Check increment/decrement
     act(() => {
         result.current.increment()
     })
-    expect(result.current.date).toBe('01/03/2022')
+    expect(result.current.date).toBe('01/04/2023')
     act(() => {
         result.current.decrement()
     })
-    expect(result.current.date).toBe('01/02/2022')
+    expect(result.current.date).toBe('01/03/2023')
 
     // Check monthlength
-    expect(result.current.monthLength).toBe(28)
+    expect(result.current.monthLength).toBe(31)
 
     // Check month in plain text
-    expect(result.current.monthInText).toBe('February')
+    expect(result.current.monthInText).toBe('March')
 
     // Check interval
     const interval = result.current.interval
-    expect(interval).toHaveLength(28)
-    waitFor(() => {
-        expect(interval[0]).toBe('01/02/2022')
-        expect(interval[interval.length - 1]).toBe('28/02/2022')
+    expect(interval).toHaveLength(35)
+
+    expect(interval[0]).toStrictEqual(new Date('2023-02-27T23:00:00.000Z'))
+    expect(interval[interval.length - 1]).toStrictEqual(
+        new Date('2023-04-02T22:00:00.000Z')
+    )
+})
+
+test('takes input values and returns calendar object', () => {
+    const { result } = renderHook(() =>
+        useCalendar({
+            inputDate: new Date('2023-01-01'),
+            dateFormat: 'dd/MM/yyyy',
+            adjacent: true,
+        })
+    )
+
+    expect(result.current.date).toBe('01/01/2023')
+
+    // Check increment/decrement
+    act(() => {
+        result.current.increment()
     })
+    expect(result.current.date).toBe('01/02/2023')
+    act(() => {
+        result.current.decrement()
+    })
+    expect(result.current.date).toBe('01/01/2023')
+
+    // Check monthlength
+    expect(result.current.monthLength).toBe(31)
+
+    // Check month in plain text
+    expect(result.current.monthInText).toBe('January')
+
+    // Check interval
+    const interval = result.current.interval
+    expect(interval).toHaveLength(42)
+
+    expect(interval[0]).toStrictEqual(new Date('2022-12-26T23:00:00.000Z'))
+    expect(interval[interval.length - 1]).toStrictEqual(
+        new Date('2023-02-05T23:00:00.000Z')
+    )
 })
 
 test('It provides fallback for dateFormat', () => {

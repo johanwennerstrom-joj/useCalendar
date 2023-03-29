@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ES2015"],
+    "lib": ["ES2015", "DOM"],
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
