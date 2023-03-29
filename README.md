@@ -6,40 +6,37 @@
 
 Minimal hook for generating logic for calendars
 
-## Example use
+## Example uses
 
--   Initializing calendar
+Initializing calendar with todays date
 
-
-```
+```typescript
 import { useCalendar } from 'calendar-creator'
 
 const { interval, monthInText } = useCalendar({ inputDate: new Date() })
-
 ```
 
-- Using with Locale and custom dateFormat
+Using with Locale and custom dateFormat
 
-```
+```typescript
 /* Locales are imported seperately from date-fns
    and not included in package */
 
 import fr from 'date-fns/locale/fr'
 
-const {decrement, increment, interval, monthInText } = useCalendar({
+const { decrement, increment, interval, monthInText } = useCalendar({
     inputDate: new Date(),
     dateFormat: 'dd/MM/yyyy',
-    locale: fr
+    locale: fr,
 })
-
 ```
 
 ## Using calendardata
 
--   Map over interval
--   Use provided formatterfunc to apply default or provided format
+Map over interval
+Use provided formatterfunc to apply default or provided format
 
-```
+```typescript
 const App = () => {
 	const { interval, formatter } = useCalendar({ inputDate: new Date(), dateFormat: 'dd/MM/yyyy' })
 
@@ -53,4 +50,38 @@ const App = () => {
 	)
 }
 
+```
+
+## Incrementing/decrementing currentmonth
+
+Attach increment/decrement to events and change month
+
+```typescript
+const App = () => {
+    const { increment, decrement, monthInText } = useCalendar({
+        inputDate: new Date('2022-05-05'),
+    })
+
+    return (
+        <div>
+            <p>Current month is: {monthInText}</p>
+            <button onClick={increment}>Next month</button>
+            <button onClick={decrement}>Previous month</button>
+        </div>
+    )
+}
+```
+
+## Adjacent dates
+
+If you want adjacent dates to form
+complete calendar weeks, pass the adjacent = true argument
+
+```typescript
+const { interval } = useCalendar({
+    inputDate: new Date('2023-01-04'),
+    adjacent: true,
+})
+
+// Interval will now start on monday 26 2022 and end on sunday 5 2023
 ```
