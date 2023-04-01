@@ -5,23 +5,10 @@ import getDaysInMonth from 'date-fns/getDaysInMonth'
 import eachDayOfInterval from 'date-fns/eachDayOfInterval'
 import startOfMonth from 'date-fns/startOfMonth'
 import endOfMonth from 'date-fns/endOfMonth'
-import endOfWeek from 'date-fns/endOfWeek'
-import startOfWeek from 'date-fns/startOfWeek'
-import getDay from 'date-fns/getDay'
-
-import type { Locale } from 'date-fns'
 
 import { useCallback, useMemo, useState } from 'react'
-
-interface ICalendarReturnType {
-    date: string
-    monthInText: string
-    increment: () => void
-    decrement: () => void
-    monthLength: number
-    interval: Date[]
-    formatter: () => string
-}
+import { getEnd, getStart } from './util'
+import { IUseCalendar } from './types'
 
 /**
  * @typedef {Object} Calendar
@@ -34,41 +21,6 @@ interface ICalendarReturnType {
  * @property {function} formatter - Date-fns based formatter function with applied dateFormat and locale
  */
 
-interface IUseCalendar {
-    /**
-     *  @param {Date} inputDate - Startdate for calendar.
-     */
-    inputDate: Date
-    /**
-     *  @param {string} dateFormat - Format for date. Defaults to dd-mm-yyyy.
-     */
-    dateFormat?: string
-    /**
-     *  @param {Locale} locale - Provided date-fns locale.
-     */
-    locale?: Locale
-    /**
-     *  @param {boolean} adjacent - Include days adjacent to current month to form full weeks
-     */
-    adjacent?: boolean
-}
-
-const getStart = (date: Date, locale?: Locale) => {
-    const start = startOfMonth(date)
-    if (getDay(start) === 1) {
-        return start
-    }
-    return startOfWeek(start, { weekStartsOn: 2, locale })
-}
-
-const getEnd = (date: Date, locale?: Locale) => {
-    const end = endOfMonth(date)
-    if (getDay(end) === 0) {
-        return end
-    }
-    return endOfWeek(end, { weekStartsOn: 2, locale })
-}
-
 /**
  *  useCalendar hook - returns calendar object
  * @example
@@ -80,6 +32,7 @@ const useCalendar = ({
     dateFormat = 'dd-MM-yyyy',
     locale,
     adjacent,
+    monthFormat = 'MMMM',
 }: IUseCalendar) => {
     const [currentDate, setCurrentDate] = useState(inputDate)
 
@@ -90,23 +43,27 @@ const useCalendar = ({
         [dateFormat, locale]
     )
 
+    const getInterval = useMemo(() => {
+        return eachDayOfInterval({
+            start: adjacent
+                ? getStart(currentDate, locale)
+                : startOfMonth(currentDate),
+            end: adjacent
+                ? getEnd(currentDate, locale)
+                : endOfMonth(currentDate),
+        }).map((d) => formatter(d))
+    }, [currentDate])
+
     const calendar = useMemo(
         () => ({
             date: format(currentDate, dateFormat, { locale: locale }),
-            monthInText: format(currentDate, 'MMMM', { locale: locale }),
+            monthInText: format(currentDate, monthFormat, { locale: locale }),
             increment: () =>
                 setCurrentDate((prevMonth) => addMonths(prevMonth, 1)),
             decrement: () =>
                 setCurrentDate((prevMonth) => subMonths(prevMonth, 1)),
             monthLength: getDaysInMonth(currentDate),
-            interval: eachDayOfInterval({
-                start: adjacent
-                    ? getStart(currentDate, locale)
-                    : startOfMonth(currentDate),
-                end: adjacent
-                    ? getEnd(currentDate, locale)
-                    : endOfMonth(currentDate),
-            }),
+            interval: getInterval,
             formatter,
         }),
         [dateFormat, locale, currentDate, formatter]

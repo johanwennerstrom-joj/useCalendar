@@ -1,5 +1,6 @@
-import { renderHook, act, waitFor } from '@testing-library/react'
+import { renderHook, act } from '@testing-library/react'
 import { useCalendar } from '../useCalendar'
+import { TMonthFormats } from '../types'
 
 test('takes input values and returns calendar object', () => {
     const { result } = renderHook(() =>
@@ -34,10 +35,8 @@ test('takes input values and returns calendar object', () => {
     const interval = result.current.interval
     expect(interval).toHaveLength(35)
 
-    expect(interval[0]).toStrictEqual(new Date('2023-02-27T23:00:00.000Z'))
-    expect(interval[interval.length - 1]).toStrictEqual(
-        new Date('2023-04-02T22:00:00.000Z')
-    )
+    expect(interval[0]).toStrictEqual('28/02/2023')
+    expect(interval[interval.length - 1]).toStrictEqual('03/04/2023')
 })
 
 test('takes input values and returns calendar object', () => {
@@ -71,10 +70,8 @@ test('takes input values and returns calendar object', () => {
     const interval = result.current.interval
     expect(interval).toHaveLength(42)
 
-    expect(interval[0]).toStrictEqual(new Date('2022-12-26T23:00:00.000Z'))
-    expect(interval[interval.length - 1]).toStrictEqual(
-        new Date('2023-02-05T23:00:00.000Z')
-    )
+    expect(interval[0]).toStrictEqual('27/12/2022')
+    expect(interval[interval.length - 1]).toStrictEqual('06/02/2023')
 })
 
 test('It provides fallback for dateFormat', () => {
@@ -93,4 +90,22 @@ test('Provides formatter function with applied formats', () => {
     )
     const formatted = result.current.formatter(new Date('12/02/2022'))
     expect(formatted).toBe('02-12-2022')
+})
+
+test.each<{ format: TMonthFormats; expected: string }>([
+    { format: 'LLL', expected: 'Feb' },
+    { format: 'LLLL', expected: 'February' },
+    { format: 'LLLLL', expected: 'F' },
+    { format: 'MMM', expected: 'Feb' },
+    { format: 'MMMM', expected: 'February' },
+    { format: 'MMMMM', expected: 'F' },
+])('Applies custom month format if applied', ({ format, expected }) => {
+    const { result } = renderHook(() =>
+        useCalendar({
+            inputDate: new Date('1990/02/02'),
+            dateFormat: 'dd-MM-yyyy',
+            monthFormat: format,
+        })
+    )
+    expect(result.current.monthInText).toStrictEqual(expected)
 })

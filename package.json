@@ -18,7 +18,7 @@
   "keywords": [],
   "author": "https://github.com/johanwennerstrom-joj",
   "license": "ISC",
-  "types": "lib/useCalendar.d.ts",
+  "types": "lib/types.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/johanwennerstrom-joj/useCalendar.git"
