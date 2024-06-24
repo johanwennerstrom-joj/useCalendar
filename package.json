@@ -24,17 +24,17 @@
     "url": "git+https://github.com/johanwennerstrom-joj/useCalendar.git"
   },
   "devDependencies": {
-    "@testing-library/react": "^14.0.0",
-    "@types/jest": "^29.5.0",
-    "@types/react": "^18.0.28",
-    "coverage-badge-creator": "^1.0.17",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "prettier": "^2.8.6",
+    "@testing-library/react": "^14.3.1",
+    "@types/jest": "^29.5.12",
+    "@types/react": "^18.3.3",
+    "coverage-badge-creator": "^1.0.19",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "prettier": "^2.8.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ts-jest": "^29.0.5",
-    "typescript": "^5.0.2"
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.2"
   },
   "peerDependencies": {
     "react": ">=17.2.0",
@@ -44,7 +44,7 @@
     "lib/**/*"
   ],
   "dependencies": {
-    "date-fns": "^2.29.3"
+    "date-fns": "^2.30.0"
   },
   "pnpm": {
     "overrides": {
